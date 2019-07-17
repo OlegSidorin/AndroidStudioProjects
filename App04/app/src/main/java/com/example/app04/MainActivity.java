@@ -2,38 +2,68 @@ package com.example.app04;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     // вводим переменные
-    Button myBtn;
-    TextView myTxtBlock;
-    int anInt;
+    static final String KEY_NAME = "name user";
+    Button myBtnShowName;
+    Button myBtnOk;
+    TextView myTxtView01;
+    EditText myEditText;
+    String name;
+    int anInt = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        myBtn = findViewById(R.id.myButton);
-        myTxtBlock = findViewById(R.id.myTtextView);
+        myBtnOk = findViewById(R.id.btn_ok);
+        myEditText = findViewById(R.id.editText);
+        myBtnShowName = findViewById(R.id.btn_showname);
+        myTxtView01 = findViewById(R.id.myTextView01);
         Log.d("tag","Вызван метод onCreate" );
 
-        myBtn.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.myButtonPush).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 anInt++;
-                if (anInt<2) myTxtBlock.setText("Ты нажал(а) " + anInt + " раз");
-                if (anInt<5 & anInt>=2) myTxtBlock.setText("Ты нажал(а) " + anInt + " раза");
-                if (anInt>=5) myTxtBlock.setText("Ты нажал(а) " + anInt + " раз");
-                if (anInt>=10) myTxtBlock.setText("Ты умничка, больше не надо жать");
+                if (anInt<2) myTxtView01.setText("Ты нажал(а) " + anInt + " раз");
+                if (anInt<5 & anInt>=2) myTxtView01.setText("Ты нажал(а) " + anInt + " раза");
+                if (anInt>=5) myTxtView01.setText("Ты нажал(а) " + anInt + " раз");
+                if (anInt>=10) myTxtView01.setText("Ты большая умничка");
                 Log.d("tag", "Вызван метод onClick");
             }
         });
+
+        myBtnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                name = myEditText.getText().toString();
+            }
+        });
+
+        myBtnShowName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "your name " + name, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    public void onClick(View view){
+        Intent intent = new Intent(MainActivity.this, BActivity.class);
+        intent.putExtra("name", name);
+        startActivity(intent);
 
     }
 
