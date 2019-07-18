@@ -5,26 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#A4D5FC"
-    android:backgroundTint="#C1FCCB"
+    android:backgroundTint="#515351"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/myTextView01"
-        android:layout_width="360dp"
-        android:layout_height="109dp"
-        android:layout_marginTop="80dp"
+        android:layout_width="392dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="sans-serif"
         android:lineSpacingExtra="14sp"
         android:text="Привет!!"
         android:textAlignment="center"
-        android:textColor="#2D27A0"
-        android:textSize="24sp"
+        android:textColor="#ECE450"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/myButtonPush" />
 
     <Button
         android:id="@+id/myButtonPush"
@@ -48,10 +48,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="388dp"
         android:layout_marginEnd="8dp"
         android:text="посчитать"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.541"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -69,19 +70,23 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/myEditText01"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
+        android:layout_width="362dp"
+        android:layout_height="40dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="1+1"
         android:textAlignment="center"
+        android:textColor="#FCF3B2"
+        android:textSize="12sp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.575"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/intMinus" />
+        app:layout_constraintTop_toBottomOf="@+id/intMulty" />
 
     <Button
         android:id="@+id/button3"
@@ -98,10 +103,10 @@
     <Button
         android:id="@+id/int1"
         style="@android:style/Widget.Button.Inset"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="280dp"
+        android:layout_width="65px"
+        android:layout_height="100px"
+        android:layout_marginStart="6px"
+        android:layout_marginTop="150dp"
         android:onClick="push_1"
         android:text="1"
         android:textAlignment="center"
@@ -113,46 +118,210 @@
     <Button
         android:id="@+id/int2"
         style="@android:style/Widget.Button.Inset"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="280dp"
+        android:layout_width="65px"
+        android:layout_height="100px"
+        android:layout_marginStart="6px"
+        android:layout_marginTop="150dp"
         android:onClick="push_2"
         android:text="2"
         android:textAlignment="center"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/int1"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/int3"
+        style="@android:style/Widget.Button.Inset"
+        android:layout_width="65px"
+        android:layout_height="100px"
+        android:layout_marginStart="6px"
+        android:layout_marginTop="150dp"
+        android:onClick="push_3"
+        android:text="3"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/int2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/int4"
+        style="@android:style/Widget.Button.Inset"
+        android:layout_width="65px"
+        android:layout_height="100px"
+        android:layout_marginStart="6px"
+        android:layout_marginTop="150dp"
+        android:onClick="push_4"
+        android:text="4"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/int3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/int5"
+        style="@android:style/Widget.Button.Inset"
+        android:layout_width="65px"
+        android:layout_height="100px"
+        android:layout_marginStart="6px"
+        android:layout_marginTop="150dp"
+        android:onClick="push_5"
+        android:text="5"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/int4"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/int6"
+        style="@android:style/Widget.Button.Inset"
+        android:layout_width="65px"
+        android:layout_height="100px"
+        android:layout_marginStart="6px"
+        android:layout_marginTop="150dp"
+        android:onClick="push_6"
+        android:text="6"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/int5"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/int7"
+        style="@android:style/Widget.Button.Inset"
+        android:layout_width="65px"
+        android:layout_height="100px"
+        android:layout_marginStart="6px"
+        android:layout_marginTop="150dp"
+        android:onClick="push_7"
+        android:text="7"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/int6"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/int8"
+        style="@android:style/Widget.Button.Inset"
+        android:layout_width="65px"
+        android:layout_height="100px"
+        android:layout_marginStart="6px"
+        android:layout_marginTop="150dp"
+        android:onClick="push_8"
+        android:text="8"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/int7"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/int9"
+        style="@android:style/Widget.Button.Inset"
+        android:layout_width="65px"
+        android:layout_height="100px"
+        android:layout_marginStart="6px"
+        android:layout_marginTop="150dp"
+        android:onClick="push_9"
+        android:text="9"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/int8"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/int0"
+        style="@android:style/Widget.Button.Inset"
+        android:layout_width="65px"
+        android:layout_height="100px"
+        android:layout_marginStart="6px"
+        android:layout_marginTop="150dp"
+        android:onClick="push_0"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/int9"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <Button
         android:id="@+id/intPlus"
         style="@android:style/Widget.Button.Inset"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="356dp"
+        android:layout_width="150px"
+        android:layout_height="100px"
+        android:layout_marginStart="24px"
+        android:layout_marginTop="5dp"
         android:onClick="push_plus"
         android:text="+"
         android:textAlignment="center"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/int1" />
 
     <Button
         android:id="@+id/intMinus"
         style="@android:style/Widget.Button.Inset"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="356dp"
+        android:layout_width="150px"
+        android:layout_height="100px"
+        android:layout_marginStart="24px"
+        android:layout_marginTop="5dp"
         android:onClick="push_minus"
         android:text="-"
         android:textAlignment="center"
         android:textSize="12sp"
         android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/intPlus"
+        app:layout_constraintTop_toBottomOf="@+id/int1" />
+
+    <Button
+        android:id="@+id/intMulty"
+        style="@android:style/Widget.Button.Inset"
+        android:layout_width="150px"
+        android:layout_height="100px"
+        android:layout_marginStart="24px"
+        android:layout_marginTop="5dp"
+        android:onClick="push_multy"
+        android:text="*"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/intMinus"
+        app:layout_constraintTop_toBottomOf="@+id/int1" />
+
+    <Button
+        android:id="@+id/intDiv"
+        style="@android:style/Widget.Button.Inset"
+        android:layout_width="150px"
+        android:layout_height="100px"
+        android:layout_marginStart="24px"
+        android:layout_marginTop="5dp"
+        android:onClick="push_div"
+        android:text="-"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/intMulty"
+        app:layout_constraintTop_toBottomOf="@+id/int1" />
+
+    <TextView
+        android:id="@+id/myTextView02"
+        android:layout_width="351dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:textAlignment="center"
+        android:textColor="#FFEB3B"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/int8"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/myTextView01" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
