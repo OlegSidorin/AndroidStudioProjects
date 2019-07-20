@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                app:srcCompat="@android:drawable/btn_star" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="euy5vtb4u5yt445yubt uygt b4u5iytg b45yugt ui54ygt iu43y6gt iu43ygt iu43t ib3u4t ib3u4t i3u4t i3uty i34ut i3u4yt ib3u4ytb i3u4yti43uyt i34uyt bi34uytbi3u4yti34ytb i3u4yti34uyt i34uytb i34uyt bi43uyt i43uyt bi34uyt i34uyt i34uty i43uyt i34uyt i3u4ytiweiurhgieruhi ieurhgieuhhjbge iujehrvieurhgieuhgiu ieurgieurhgieurhgiu  uh kweiweut ieu5  "
+                android:textAlignment="center"
+                android:textSize="40sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
