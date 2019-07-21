@@ -9,7 +9,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.constrain_layout);
+        setContentView(R.layout.another_lay);
         // три поля разметка есть текст справа поле для ввода имя и кнопка ввести имя
         // введите имя поле для ввода кнопка
         // ниже чек бокс

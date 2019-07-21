@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/myBackground"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <Button
+        android:id="@+id/nm1"
+        style="@android:style/Widget.Holo.Light.Button.Borderless.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:onClick="push01"
+        android:text="1"
+        android:textColor="@color/colorOfMyNum"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <Button
+        android:id="@+id/nm2"
+        style="@android:style/Widget.Holo.Light.Button.Borderless.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="2"
+        android:textColor="@color/colorOfMyNum"
+        android:textSize="36sp"
+        app:layout_constraintStart_toEndOf="@+id/nm1"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <Button
+        android:id="@+id/nm3"
+        style="@android:style/Widget.Holo.Light.Button.Borderless.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="3"
+        android:textColor="@color/colorOfMyNum"
+        android:textSize="36sp"
+        app:layout_constraintStart_toEndOf="@+id/nm2"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <Button
+        android:id="@+id/nmDiv"
+        style="@android:style/Widget.Holo.Light.Button.Borderless.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="/"
+        android:textColor="@color/colorOfMyNum"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nm3"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <Button
+        android:id="@+id/nmMulty"
+        style="@android:style/Widget.Holo.Light.Button.Borderless.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="*"
+        android:textColor="@color/colorOfMyNum"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nm6"
+        app:layout_constraintTop_toBottomOf="@+id/nmDiv" />
+
+    <Button
+        android:id="@+id/nmPlus"
+        style="@android:style/Widget.Holo.Light.Button.Borderless.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="pushPlus"
+        android:text="+"
+        android:textColor="@color/colorOfMyNum"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nm9"
+        app:layout_constraintTop_toBottomOf="@+id/nmMulty" />
+
+    <Button
+        android:id="@+id/nmMinus"
+        style="@android:style/Widget.Holo.Light.Button.Borderless.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="-"
+        android:textColor="@color/colorOfMyNum"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nm9"
+        app:layout_constraintTop_toBottomOf="@+id/nmPlus" />
+
+    <Button
+        android:id="@+id/nm4"
+        style="@android:style/Widget.Holo.Light.Button.Borderless.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="4"
+        android:textColor="@color/colorOfMyNum"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nm1" />
+
+    <Button
+        android:id="@+id/nm5"
+        style="@android:style/Widget.Holo.Light.Button.Borderless.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="5"
+        android:textColor="@color/colorOfMyNum"
+        android:textSize="36sp"
+        app:layout_constraintStart_toEndOf="@+id/nm4"
+        app:layout_constraintTop_toBottomOf="@+id/nm2" />
+
+    <Button
+        android:id="@+id/nm6"
+        style="@android:style/Widget.Holo.Light.Button.Borderless.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="6"
+        android:textColor="@color/colorOfMyNum"
+        android:textSize="36sp"
+        app:layout_constraintStart_toEndOf="@+id/nm5"
+        app:layout_constraintTop_toBottomOf="@+id/nm3" />
+
+    <Button
+        android:id="@+id/nm7"
+        style="@android:style/Widget.Holo.Light.Button.Borderless.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="7"
+        android:textColor="@color/colorOfMyNum"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nm4" />
+
+    <Button
+        android:id="@+id/nm8"
+        style="@android:style/Widget.Holo.Light.Button.Borderless.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="8"
+        android:textColor="@color/colorOfMyNum"
+        android:textSize="36sp"
+        app:layout_constraintStart_toEndOf="@+id/nm7"
+        app:layout_constraintTop_toBottomOf="@+id/nm5" />
+
+    <Button
+        android:id="@+id/nm0"
+        style="@android:style/Widget.Holo.Light.Button.Borderless.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="0"
+        android:textColor="@color/colorOfMyNum"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nm8" />
+
+    <Button
+        android:id="@+id/nmX"
+        style="@android:style/Widget.Holo.Light.Button.Borderless.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="."
+        android:textColor="@color/colorOfMyNum"
+        android:textSize="36sp"
+        app:layout_constraintStart_toEndOf="@+id/nm0"
+        app:layout_constraintTop_toBottomOf="@+id/nm8" />
+
+    <Button
+        android:id="@+id/nmEq"
+        style="@android:style/Widget.Holo.Light.Button.Borderless.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:onClick="pushEq"
+        android:text="="
+        android:textColor="@color/colorOfMyNum"
+        android:textSize="36sp"
+        app:layout_constraintStart_toEndOf="@+id/nmX"
+        app:layout_constraintTop_toBottomOf="@+id/nm9" />
+
+
+    <Button
+        android:id="@+id/nm9"
+        style="@android:style/Widget.Holo.Light.Button.Borderless.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="9"
+        android:textColor="@color/colorOfMyNum"
+        android:textSize="36sp"
+        app:layout_constraintStart_toEndOf="@+id/nm8"
+        app:layout_constraintTop_toBottomOf="@+id/nm6" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.14" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/my_shape_dark"
+        android:textAlignment="center"
+        android:textColor="@color/colorOfMyNum"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+    <TextView
+        android:id="@+id/textMemo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#00524343"
+        android:textColor="@color/colorOfMyNum"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textMemoZnak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#00524343"
+        android:textColor="@color/colorOfMyNum"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="MaryCalc V.1"
+        android:textColor="@color/colorOfMyNum"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
