@@ -4,5 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="myBackground">#222</color>
-    <color name="colorOfMyNum">#AAA</color>
+    <color name="myColorOfNum">#AAA</color>
+    <color name="myColorLightBack">#727272</color>
+    <color name="myColorBack">#FFA264</color>
 </resources>
