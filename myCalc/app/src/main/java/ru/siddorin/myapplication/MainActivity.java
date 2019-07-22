@@ -10,8 +10,8 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     TextView myTxtView, myTxtMemo, myTxtZnak;
-    Button btn1;
-    Integer i;
+    Double aDouble;
+    Long aLong;
     int znakOperation; // 1 - plus, 2 - minus, 3 multy, 4 - divide
     Boolean flagOfEq, flagOfZnak;
 
@@ -67,13 +67,40 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             break;
+            case 3: {
+                if (!flagOfZnak) { // если первый раз нажата
+                    myTxtMemo.setText(myTxtView.getText());
+                    myTxtZnak.setText("*");
+                    myTxtView.setText(null);
+                    flagOfEq = false;
+                    flagOfZnak = true;
+                } else { // если повторное нажатаие
+                    myTxtZnak.setText("*");
+                    flagOfEq = false;
+                    flagOfZnak = true;
+                }
+            }
+            break;
+            case 4: {
+                if (!flagOfZnak) { // если первый раз нажата
+                    myTxtMemo.setText(myTxtView.getText());
+                    myTxtZnak.setText("/");
+                    myTxtView.setText(null);
+                    flagOfEq = false;
+                    flagOfZnak = true;
+                } else { // если повторное нажатаие
+                    myTxtZnak.setText("/");
+                    flagOfEq = false;
+                    flagOfZnak = true;
+                }
+            }
+            break;
         }
     }
 
     public void push1(View view) {
         pushNum("1");
     }
-
     public void push2(View view) {
         pushNum("2");
     }
@@ -98,6 +125,9 @@ public class MainActivity extends AppCompatActivity {
     public void push9(View view) {
         pushNum("9");
     }
+    public void pushPoint(View view) {
+        pushNum(".");
+    }
     public void push0(View view) {
         pushNum("0");
     }
@@ -108,6 +138,14 @@ public class MainActivity extends AppCompatActivity {
     }
     public void pushMinus(View view) {
         znakOperation = 2;
+        operation(znakOperation);
+    }
+    public void pushMulty(View view) {
+        znakOperation = 3;
+        operation(znakOperation);
+    }
+    public void pushDivide(View view) {
+        znakOperation = 4;
         operation(znakOperation);
     }
 
@@ -143,9 +181,9 @@ public class MainActivity extends AppCompatActivity {
                 if (flagOfEq) { // если была уже нажата кноика =
                 } else { // если нажата = в первый раз
                     if (!flagOfZnak) { // если кнопка знака не была нажата
-                        i = Integer.parseInt(myTxtMemo.getText().toString()) +
-                                Integer.parseInt(myTxtView.getText().toString());
-                        myTxtView.setText(i.toString());
+                        aDouble = Double.parseDouble(myTxtMemo.getText().toString()) +
+                                Double.parseDouble(myTxtView.getText().toString());
+                        myTxtView.setText(aDouble.toString());
                         myTxtZnak.setText(null);
                         myTxtMemo.setText(null);
                         flagOfEq = true;
@@ -160,9 +198,43 @@ public class MainActivity extends AppCompatActivity {
                 if (flagOfEq) { // если была уже нажата кноика =
                 } else { // если нажата = в первый раз
                     if (!flagOfZnak) { // если кнопка знака не была нажата
-                        i = Integer.parseInt(myTxtMemo.getText().toString()) -
-                                Integer.parseInt(myTxtView.getText().toString());
-                        myTxtView.setText(i.toString());
+                        aDouble = Double.parseDouble(myTxtMemo.getText().toString()) -
+                                Double.parseDouble(myTxtView.getText().toString());
+                        myTxtView.setText(aDouble.toString());
+                        myTxtZnak.setText(null);
+                        myTxtMemo.setText(null);
+                        flagOfEq = true;
+                        flagOfZnak = false;
+                    } else {
+
+                    }
+                }
+            }
+            break;
+            case 3: {
+                if (flagOfEq) { // если была уже нажата кноика =
+                } else { // если нажата = в первый раз
+                    if (!flagOfZnak) { // если кнопка знака не была нажата
+                        aDouble = Double.parseDouble(myTxtMemo.getText().toString()) *
+                                Double.parseDouble(myTxtView.getText().toString());
+                        myTxtView.setText(aDouble.toString());
+                        myTxtZnak.setText(null);
+                        myTxtMemo.setText(null);
+                        flagOfEq = true;
+                        flagOfZnak = false;
+                    } else {
+
+                    }
+                }
+            }
+            break;
+            case 4: {
+                if (flagOfEq) { // если была уже нажата кноика =
+                } else { // если нажата = в первый раз
+                    if (!flagOfZnak) { // если кнопка знака не была нажата
+                        aDouble = Double.parseDouble(myTxtMemo.getText().toString()) /
+                                Double.parseDouble(myTxtView.getText().toString());
+                        myTxtView.setText(aDouble.toString());
                         myTxtZnak.setText(null);
                         myTxtMemo.setText(null);
                         flagOfEq = true;
