@@ -3,8 +3,10 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="myBackground">#222</color>
-    <color name="myColorOfNum">#AAA</color>
+    <color name="myBackground">#2C3A47</color>
+    <color name="myColorOfNum">#F8EFBA</color>
     <color name="myColorLightBack">#727272</color>
-    <color name="myColorBack">#FFA264</color>
+    <color name="myColorBack">#EAB543</color>
+    <color name="myScreen">#BDC581</color>
+    <color name="myNumsOnScreen">#182C61</color>
 </resources>
