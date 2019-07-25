@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     Double aDouble;
     Long aLong;
     int znakOperation; // 1 - plus, 2 - minus, 3 multy, 4 - divide
-    Boolean flagOfEq, flagOfZnak;
+    Boolean flagOfEq, flagOfZnak, flagOfNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         flagOfEq = false;
         flagOfZnak = false;
+        flagOfNum = false;
     }
 
     public void clickC(View view) {
@@ -29,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         myTxtMemo = findViewById(R.id.textMemo);
         myTxtView.setText(null);
         myTxtMemo.setText(null);
-        myTxtZnak.setText(null);
         flagOfZnak = false;
         flagOfEq = false;
     }
@@ -41,11 +41,23 @@ public class MainActivity extends AppCompatActivity {
 
         switch (znak) {
             case 1: {
-                if (!flagOfZnak && !flagOfEq) { // если не были до этого нажаты + и =
-                    stringValueMemo = stringValue;
-                    myTxtMemo.setText(String.format("%s +", stringValueMemo));
-                    flagOfEq = false;
-                    flagOfZnak = true;
+                if (!flagOfEq) {
+                    if (!flagOfNum) {
+                        if (!flagOfZnak) { // +не нажат
+                            if (stringValueMemo == null) stringValueMemo = "0";
+                            value = Double.parseDouble(stringValue);
+                            valueMemo = Double.parseDouble(stringValueMemo);
+                            valueResult = value + valueMemo;
+                            myTxtView.setText(String.format("%s", valueResult.toString()));
+                            stringValueMemo = stringValue;
+                            stringValueHistory = String.format("%s +", stringValueMemo);
+                            myTxtMemo.setText(stringValueHistory);
+                        }
+                        if (flagOfZnak) { // +нажат  =не нажат
+                            stringValueHistory = String.format("%s *", stringValueHistory.substring(0, stringValueHistory.length() - 2));
+                            myTxtMemo.setText(stringValueHistory);
+                        }
+                    }
                 }
             }
             break;
@@ -55,14 +67,23 @@ public class MainActivity extends AppCompatActivity {
 
     public void push1(View view) {
         pushNum("1");
+        flagOfNum = true;
+        flagOfEq = false;
+        flagOfZnak = false;
     }
 
     public void push2(View view) {
         pushNum("2");
+        flagOfNum = true;
+        flagOfEq = false;
+        flagOfZnak = false;
     }
 
     public void push3(View view) {
         pushNum("3");
+        flagOfNum = true;
+        flagOfEq = false;
+        flagOfZnak = false;
     }
 
     public void push4(View view) {
@@ -100,11 +121,17 @@ public class MainActivity extends AppCompatActivity {
     public void pushPlus(View view) {
         znakOperation = 1;
         pushZnak(znakOperation);
+        flagOfZnak = true;
+        flagOfNum = false;
+        flagOfEq = false;
     }
 
     public void pushMinus(View view) {
         znakOperation = 2;
         pushZnak(znakOperation);
+        flagOfZnak = true;
+        flagOfNum = false;
+        flagOfEq = false;
     }
 
     public void pushMulty(View view) {
@@ -128,8 +155,11 @@ public class MainActivity extends AppCompatActivity {
                 stringValue = String.format("%s%s", stringValue, str_num);
             }
             myTxtView.setText(stringValue);
-            flagOfEq = false;
-            flagOfZnak = false;
+        }
+        if (!flagOfEq && flagOfZnak) { // не была нажата = и не была нажата +
+            myTxtView = findViewById(R.id.textView);
+            stringValue = String.format("%s", str_num);
+
         }
 
     }
@@ -144,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
                     value = Double.parseDouble(stringValue);
                     valueMemo = Double.parseDouble(stringValueMemo);
                     valueResult = value + valueMemo;
-                    stringValueMemo = String.format("%s + %s =",stringValueMemo, stringValue);
+                    stringValueMemo = String.format("%s + %s =", stringValueMemo, stringValue);
                     myTxtMemo.setText(stringValueMemo);
                     myTxtView.setText(valueResult.toString());
                     flagOfEq = true;
