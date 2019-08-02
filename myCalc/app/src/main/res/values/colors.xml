@@ -3,9 +3,12 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="myBackground">#2C3A47</color>
+    <color name="myBackground">#0E161B</color>
+    <color name="myBackgroundNum">#151C25</color>
+    <color name="myBackgroundZnak">#06454B</color>
     <color name="myColorOfNum">#F8EFBA</color>
-    <color name="myColorLightBack">#727272</color>
+    <color name="myColorLightBackNum">#7A6E4F</color>
+    <color name="myColorLightBackZnak">#7A6E4F</color>
     <color name="myColorBack">#EAB543</color>
     <color name="myScreen">#BDC581</color>
     <color name="myNumsOnScreen">#182C61</color>
