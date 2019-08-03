@@ -52,13 +52,20 @@ public class MainActivity extends AppCompatActivity {
         myTxtView = findViewById(R.id.textView);
         myTxtMemo = findViewById(R.id.textMemo);
         switch (znak) {
-            case 0:
+            case 0:  // нажатие =
                 switch (prevZnak) {
-                    case 1:
+                    case 1:  // после +
                         valueResult = valueMemo + value;
                         break;
-                    case 2:
+                    case 2:  // после -
                         valueResult = valueMemo - value;
+                        break;
+                    case 3:  // после *
+                        valueResult = valueMemo * value;
+                        break;
+                    case 4:  // после /
+                        if (value != 0) valueResult = valueMemo / value;
+                    else valueResult = valueMemo;
                         break;
                     default:
                         valueResult = value;
@@ -70,13 +77,20 @@ public class MainActivity extends AppCompatActivity {
                 myTxtMemo.setText(null);
                 myTxtView.setText(String.format("%.0f",valueResult));
                 break;
-            case 1:
+            case 1:  // нажатие +
                 switch (prevZnak) {
-                    case 1:
+                    case 1:  // после +
                         valueResult = valueMemo + value;
                         break;
-                    case 2:
+                    case 2:  // после -
                         valueResult = valueMemo - value;
+                        break;
+                    case 3:  // после *
+                        valueResult = valueMemo * value;
+                        break;
+                    case 4:  // после /
+                        if (value != 0) valueResult = valueMemo / value;
+                        else valueResult = valueMemo;
                         break;
                     default:
                         valueResult = value;
@@ -88,13 +102,20 @@ public class MainActivity extends AppCompatActivity {
                 myTxtMemo.setText(String.format("%.0f%s", valueMemo, " +"));
                 myTxtView.setText(String.format("%.0f",valueResult));
                 break;
-            case 2:
+            case 2:  // нажатие -
                 switch (prevZnak) {
                     case 1:
                         valueResult = valueMemo + value;
                         break;
                     case 2:
                         valueResult = valueMemo - value;
+                        break;
+                    case 3:
+                        if (value != 0) valueResult = valueMemo / value;
+                        else valueResult = valueMemo;
+                        break;
+                    case 4:
+                        valueResult = valueMemo * value;
                         break;
                     default:
                         valueResult = value;
@@ -103,6 +124,54 @@ public class MainActivity extends AppCompatActivity {
                 value = 0;
                 prevZnak = 2;
                 myTxtMemo.setText(String.format("%.0f%s", valueMemo, " -"));
+                myTxtView.setText(String.format("%.0f",valueResult));
+                break;
+            case 3:  // нажатие *
+                switch (prevZnak) {
+                    case 1:
+                        valueResult = valueMemo + value;
+                        break;
+                    case 2:
+                        valueResult = valueMemo - value;
+                        break;
+                    case 3:
+                        if (value != 0) valueResult = valueMemo / value;
+                        else valueResult = valueMemo;
+                        break;
+                    case 4:
+                        valueResult = valueMemo * value;
+                        break;
+                    default:
+                        valueResult = value;
+                }
+                valueMemo = valueResult;
+                value = 0;
+                prevZnak = 3;
+                myTxtMemo.setText(String.format("%.0f%s", valueMemo, " *"));
+                myTxtView.setText(String.format("%.0f",valueResult));
+                break;
+            case 4:  // нажатие *
+                switch (prevZnak) {
+                    case 1:
+                        valueResult = valueMemo + value;
+                        break;
+                    case 2:
+                        valueResult = valueMemo - value;
+                        break;
+                    case 3:
+                        if (value != 0) valueResult = valueMemo / value;
+                        else valueResult = valueMemo;
+                        break;
+                    case 4:
+                        valueResult = valueMemo * value;
+                        break;
+                    default:
+                        valueResult = value;
+                }
+                valueMemo = valueResult;
+                value = 0;
+                prevZnak = 4;
+                myTxtMemo.setText(String.format("%.0f%s", valueMemo, " /"));
                 myTxtView.setText(String.format("%.0f",valueResult));
                 break;
         }
@@ -175,6 +244,9 @@ public class MainActivity extends AppCompatActivity {
     public void push0(View view) {
         pushNum(0);
         anim_rotate(view);
+        flagOfZnak = false;
+        flagOfNum = true;
+        flagOfEq = false;
     }
 
     public void pushPlus(View view) {
@@ -196,16 +268,25 @@ public class MainActivity extends AppCompatActivity {
     public void pushMulty(View view) {
         znak = 3;
         pushZnak(znak);
+        flagOfZnak = true;
+        flagOfNum = false;
+        flagOfEq = false;
     }
 
     public void pushDivide(View view) {
         znak = 4;
         pushZnak(znak);
+        flagOfZnak = true;
+        flagOfNum = false;
+        flagOfEq = false;
     }
 
     public void pushEq(View view) {
         znak = 0;
         pushZnak(znak);
+        flagOfZnak = true;
+        flagOfNum = false;
+        flagOfEq = true;
     }
 
 
