@@ -50,14 +50,14 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textMaryCalc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginBottom="8dp"
         android:text="MaryCalc V.1"
         android:textColor="@color/myColorOfNum"
-        android:textStyle="italic"
+        android:fontFamily="@font/hanging_letters"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent" />
 

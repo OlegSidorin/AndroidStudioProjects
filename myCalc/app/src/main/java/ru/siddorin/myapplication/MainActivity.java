@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    final String maryCalcText = "MaryCalc <sup><small>V.1</small></sup>";
+    String sF = "%.0f", sFs = "%.0f%s";
     TextView myTxtView, myTxtMemo, myTxtZnak;
     String stringValue, stringValueMemo, stringValueHistory;
     double value, valueMemo, valueResult;
@@ -21,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ((TextView)findViewById(R.id.textMaryCalc)).setText(Html.fromHtml(maryCalcText));
         flagOfEq = false;
         flagOfZnak = false;
         flagOfNum = false;
@@ -45,7 +49,27 @@ public class MainActivity extends AppCompatActivity {
     public void pushNum(int num) {
         value = value * 10 + num;
         myTxtView = findViewById(R.id.textView);
-        myTxtView.setText(String.format("%.0f",value));
+        myTxtView.setText(String.format(sF,value));
+    }
+    public void getValueResult() {
+        switch (prevZnak) {
+            case 1:  // после +
+                valueResult = valueMemo + value;
+                break;
+            case 2:  // после -
+                valueResult = valueMemo - value;
+                break;
+            case 3:  // после *
+                valueResult = valueMemo * value;
+                break;
+            case 4:  // после /
+                if (value != 0) valueResult = valueMemo / value;
+                else valueResult = valueMemo;
+                break;
+            default: // после =
+                valueResult = value;
+                break;
+        }
     }
 
     public void pushZnak(int znak) {
@@ -53,126 +77,44 @@ public class MainActivity extends AppCompatActivity {
         myTxtMemo = findViewById(R.id.textMemo);
         switch (znak) {
             case 0:  // нажатие =
-                switch (prevZnak) {
-                    case 1:  // после +
-                        valueResult = valueMemo + value;
-                        break;
-                    case 2:  // после -
-                        valueResult = valueMemo - value;
-                        break;
-                    case 3:  // после *
-                        valueResult = valueMemo * value;
-                        break;
-                    case 4:  // после /
-                        if (value != 0) valueResult = valueMemo / value;
-                    else valueResult = valueMemo;
-                        break;
-                    default:
-                        valueResult = value;
-                        break;
-                }
+                getValueResult();
                 valueMemo = 0;
-                value = valueResult;
+                value = 0;
                 prevZnak = 0;
                 myTxtMemo.setText(null);
-                myTxtView.setText(String.format("%.0f",valueResult));
+                myTxtView.setText(String.format(sF,valueResult));
                 break;
             case 1:  // нажатие +
-                switch (prevZnak) {
-                    case 1:  // после +
-                        valueResult = valueMemo + value;
-                        break;
-                    case 2:  // после -
-                        valueResult = valueMemo - value;
-                        break;
-                    case 3:  // после *
-                        valueResult = valueMemo * value;
-                        break;
-                    case 4:  // после /
-                        if (value != 0) valueResult = valueMemo / value;
-                        else valueResult = valueMemo;
-                        break;
-                    default:
-                        valueResult = value;
-                        break;
-                }
+                getValueResult();
                 valueMemo = valueResult;
                 value = 0;
                 prevZnak = 1;
-                myTxtMemo.setText(String.format("%.0f%s", valueMemo, " +"));
-                myTxtView.setText(String.format("%.0f",valueResult));
+                myTxtMemo.setText(String.format(sFs, valueMemo, " +"));
+                myTxtView.setText(String.format(sF,valueResult));
                 break;
             case 2:  // нажатие -
-                switch (prevZnak) {
-                    case 1:
-                        valueResult = valueMemo + value;
-                        break;
-                    case 2:
-                        valueResult = valueMemo - value;
-                        break;
-                    case 3:
-                        if (value != 0) valueResult = valueMemo / value;
-                        else valueResult = valueMemo;
-                        break;
-                    case 4:
-                        valueResult = valueMemo * value;
-                        break;
-                    default:
-                        valueResult = value;
-                }
+                getValueResult();
                 valueMemo = valueResult;
                 value = 0;
                 prevZnak = 2;
-                myTxtMemo.setText(String.format("%.0f%s", valueMemo, " -"));
-                myTxtView.setText(String.format("%.0f",valueResult));
+                myTxtMemo.setText(String.format(sFs, valueMemo, " -"));
+                myTxtView.setText(String.format(sF,valueResult));
                 break;
             case 3:  // нажатие *
-                switch (prevZnak) {
-                    case 1:
-                        valueResult = valueMemo + value;
-                        break;
-                    case 2:
-                        valueResult = valueMemo - value;
-                        break;
-                    case 3:
-                        if (value != 0) valueResult = valueMemo / value;
-                        else valueResult = valueMemo;
-                        break;
-                    case 4:
-                        valueResult = valueMemo * value;
-                        break;
-                    default:
-                        valueResult = value;
-                }
+                getValueResult();
                 valueMemo = valueResult;
                 value = 0;
                 prevZnak = 3;
-                myTxtMemo.setText(String.format("%.0f%s", valueMemo, " *"));
-                myTxtView.setText(String.format("%.0f",valueResult));
+                myTxtMemo.setText(String.format(sFs, valueMemo, " *"));
+                myTxtView.setText(String.format(sF,valueResult));
                 break;
             case 4:  // нажатие *
-                switch (prevZnak) {
-                    case 1:
-                        valueResult = valueMemo + value;
-                        break;
-                    case 2:
-                        valueResult = valueMemo - value;
-                        break;
-                    case 3:
-                        if (value != 0) valueResult = valueMemo / value;
-                        else valueResult = valueMemo;
-                        break;
-                    case 4:
-                        valueResult = valueMemo * value;
-                        break;
-                    default:
-                        valueResult = value;
-                }
+                getValueResult();
                 valueMemo = valueResult;
                 value = 0;
                 prevZnak = 4;
-                myTxtMemo.setText(String.format("%.0f%s", valueMemo, " /"));
-                myTxtView.setText(String.format("%.0f",valueResult));
+                myTxtMemo.setText(String.format(sFs, valueMemo, " /"));
+                myTxtView.setText(String.format(sF,valueResult));
                 break;
         }
     }
