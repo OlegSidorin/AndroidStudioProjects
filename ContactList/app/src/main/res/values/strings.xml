@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">ContactList</string>
+    <string name="first_name">First Name</string>
+    <string name="second_name">Second Name</string>
+    <string-array name="names">
+        <item>Ivan</item>
+        <item>Oleg</item>
+        <item>Dmitry</item>
+        <item>Maxim</item>
+        <item>Jorge</item>
+        <item>Sveta</item>
+        <item>Lyudmila</item>
+        <item>Tatiana</item>
+        <item>Katia</item>
+        <item>Olga</item>
+        <item>Nastia</item>
+    </string-array>
+    <string-array name="surnames">
+        <item>Petrovich</item>
+        <item>Demidovich</item>
+        <item>Krasnov</item>
+        <item>Shurik</item>
+        <item>Chop</item>
+        <item>Nikolaevich</item>
+        <item>Ivanovich</item>
+        <item>Pilsner</item>
+        <item>Yovovich</item>
+        <item>AliaUliu</item>
+        <item>Nikodomovich</item>
+    </string-array>
+    <string-array name="types">
+        <item>Coder</item>
+        <item>Designer</item>
+        <item>Chief</item>
+        <item>Other</item>
+    </string-array>
+</resources>
