@@ -12,25 +12,29 @@
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:text="_name_"
-        app:layout_constraintStart_toEndOf="@+id/txtPic"
+        android:textColor="@color/colorEditText"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/iPhoto"
         app:layout_constraintTop_toBottomOf="@+id/tv_surname" />
 
     <TextView
         android:id="@+id/tv_surname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:text="_surname_"
         android:textColor="@color/colorEditText"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/txtPic"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/iPhoto"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_delete"
         style="@android:style/Widget.Holo.Light.Button"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:background="@drawable/selector_del"
         android:textSize="12sp"
         android:textStyle="italic"
@@ -40,8 +44,8 @@
     <Button
         android:id="@+id/btn_edit"
         style="@android:style/Widget.Holo.Light.Button"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/selector_edit"
         android:textSize="12sp"
@@ -50,20 +54,21 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_delete" />
 
     <TextView
-        android:id="@+id/txtPic"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="@drawable/ic_portrait_black_24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/tv_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:text="_type_"
-        android:textSize="10sp"
+        android:textSize="12sp"
         android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@+id/txtPic"
+        app:layout_constraintStart_toEndOf="@+id/iPhoto"
         app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+    <ImageView
+        android:id="@+id/iPhoto"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars[0]" />
 </androidx.constraintlayout.widget.ConstraintLayout>
