@@ -18,9 +18,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     public interface OnMyDataEditListener {
         public void OnEditData(ArrayList<MyData> data, int position);
+
     }
 
     private OnMyDataEditListener onMyDataEditListener;
+    public void setOnMyDataEditListener(OnMyDataEditListener onMyDataEditListener){
+        this.onMyDataEditListener = onMyDataEditListener;
+    }
 
     public MyAdapter(ArrayList<MyData> data) {
         this.data = data;
@@ -43,8 +47,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), String.format("EDIT %s", item.surname), Toast.LENGTH_SHORT).show();
-                // onMyDataEditListener.OnEditData(data,position);
+                //Toast.makeText(view.getContext(), String.format("EDIT %s", item.surname), Toast.LENGTH_SHORT).show();
+                onMyDataEditListener.OnEditData(data,position);
             }
         });
         holder.btn_delete.setOnClickListener(new View.OnClickListener() {

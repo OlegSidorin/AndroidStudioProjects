@@ -3,13 +3,13 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="myBackground">#0E161B</color>
-    <color name="myBackgroundNum">#151C25</color>
-    <color name="myBackgroundZnak">#06224B</color>
+    <color name="myBackground">#020203</color>
+    <color name="myBackgroundNum">#303952</color>
+    <color name="myBackgroundZnak">#e15f41</color>
     <color name="myColorOfNum">#F8EFBA</color>
-    <color name="myColorLightBackNum">#7A6E4F</color>
-    <color name="myColorLightBackZnak">#7A6E4F</color>
+    <color name="myColorLightBackNum">#596275</color>
+    <color name="myColorLightBackZnak">#e77f67</color>
     <color name="myColorBack">#EAB543</color>
-    <color name="myScreen">#BDC581</color>
-    <color name="myNumsOnScreen">#182C61</color>
+    <color name="myScreen">#f7d794</color>
+    <color name="myNumsOnScreen">#050809</color>
 </resources>
