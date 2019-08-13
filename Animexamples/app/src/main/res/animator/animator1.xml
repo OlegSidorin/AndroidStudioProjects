@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set android:ordering="together" xmlns:android="http://schemas.android.com/apk/res/android">
+<objectAnimator
+    android:repeatMode="reverse"
+    android:repeatCount="infinite"
+    android:valueFrom="18dp"
+    android:valueTo="36dp"
+    android:interpolator="@android:anim/cycle_interpolator"
+    android:propertyName="textSize"
+    ></objectAnimator>
+    <objectAnimator
+        android:repeatMode="reverse"
+        android:repeatCount="infinite"
+        android:valueFrom="0"
+        android:valueTo="180"
+        android:propertyName="rotation"
+        ></objectAnimator>
+</set>
