@@ -67,7 +67,7 @@ public class EditActivity extends AppCompatActivity {
                 intent.putExtra("name", name);
                 intent.putExtra("surname", surname);
                 intent.putExtra("type", type);
-                who = spiner_type.getSelectedItem().toString();
+                who = String.valueOf(spiner_type.getSelectedItem());
                 intent.putExtra("who", who);
                 intent.putExtra("position", getIntent().getExtras().getInt("position"));
                 setResult(RESULT_OK, intent);

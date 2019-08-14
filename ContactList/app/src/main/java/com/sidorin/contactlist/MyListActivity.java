@@ -49,12 +49,14 @@ MyAdapter adapter;
         if (requestCode == 1111 && resultCode == RESULT_OK && data != null) {
             String name = data.getStringExtra("name");
             String surname = data.getStringExtra("surname");
+            String who = data.getStringExtra("who");
             int type = data.getIntExtra("type",0);
             int pos = data.getIntExtra("position",-1);
             MyData item = this.data.get(pos);
             item.name = name;
             item.surname = surname;
             item.type = type;
+            item.who = who;
             adapter.notifyItemChanged(pos);
 
 
