@@ -7,4 +7,5 @@
     <color name="colorEditText">#130f40</color>
     <color name="colorEditTextYellow">#f0932b</color>
     <color name="colorPhotoBack">#7ed6df</color>
+    <color name="colorText">#D1D6DF</color>
 </resources>

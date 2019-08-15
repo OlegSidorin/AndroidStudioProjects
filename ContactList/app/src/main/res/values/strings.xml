@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ContactList</string>
-    <string name="first_name">First Name</string>
-    <string name="second_name">Second Name</string>
+    <string name="first_name">Имя</string>
+    <string name="second_name">Фамилия</string>
     <string-array name="names">
         <item>Мария</item>
         <item>Сергей</item>
