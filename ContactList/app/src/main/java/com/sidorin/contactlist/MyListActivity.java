@@ -9,7 +9,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -21,12 +23,12 @@ MyAdapter adapter;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_list);
-        ImageView iv_add = findViewById(R.id.iv_add);
+
+        final ImageView iv_add = findViewById(R.id.iv_add);
         iv_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MyListActivity.this,EditActivity.class);
-                startActivity(intent);
+                onAddData(data,1);
             }
         });
 
@@ -44,7 +46,7 @@ MyAdapter adapter;
 
 
     @Override
-    public void OnEditData(ArrayList<MyData> data, int position) {
+    public void onEditData(ArrayList<MyData> data, int position) {
        // Toast.makeText(this,"Edit",Toast.LENGTH_SHORT).show();
         Intent intent  = new Intent(this,EditActivity.class);
         MyData item = data.get(position);
@@ -56,6 +58,12 @@ MyAdapter adapter;
         intent.putExtra("position", position);
         startActivityForResult(intent,1111);
         //startActivity(intent);
+    }
+
+    @Override
+    public void onAddData(ArrayList<MyData> data, int position) {
+        Intent intent  = new Intent(this,EditActivity.class);
+        startActivityForResult(intent,2222);
     }
 
     @Override
@@ -73,8 +81,17 @@ MyAdapter adapter;
             item.type = type;
             item.who = who;
             adapter.notifyItemChanged(pos);
-
-
+        }else{
+            if (requestCode==2222 && resultCode == RESULT_OK && data != null) {
+                String name = String.valueOf(findViewById(R.id.inputFirstName));
+                String surname = String.valueOf(findViewById(R.id.inputSecondName));
+                Spinner spin = findViewById(R.id.spinner_of_types);
+                String who = String.valueOf(spin.getSelectedItemId());
+                int pos = 0;
+                MyData itemNew = new MyData("R","R","m","D",0);
+                MyListActivity.this.data.add(pos,itemNew);
+                adapter.notifyItemInserted(pos);
+            }
         }
     }
 }

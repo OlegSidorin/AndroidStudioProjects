@@ -17,7 +17,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private ArrayList<MyData> data;
 
     public interface OnMyDataEditListener {
-        public void OnEditData(ArrayList<MyData> data, int position);
+        void onEditData(ArrayList<MyData> data, int position);
+        void onAddData(ArrayList<MyData> data, int position);
 
     }
 
@@ -33,8 +34,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @NonNull
     @Override
     public MyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemview = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_item, parent, false);
-        MyViewHolder myViewHolder = new MyViewHolder(itemview);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_item, parent, false);
+        MyViewHolder myViewHolder = new MyViewHolder(itemView);
         return myViewHolder;
     }
 
@@ -44,11 +45,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.tv_name.setText(item.name);
         holder.tv_surname.setText(item.surname);
         holder.tv_type.setText(item.who);
+
         holder.btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Toast.makeText(view.getContext(), String.format("EDIT %s", item.surname), Toast.LENGTH_SHORT).show();
-                onMyDataEditListener.OnEditData(data,position);
+                onMyDataEditListener.onEditData(data,position);
             }
         });
         holder.btn_delete.setOnClickListener(new View.OnClickListener() {
@@ -97,12 +99,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            tv_name = itemView.findViewById(R.id.tv_name);
-            tv_surname = itemView.findViewById(R.id.tv_surname);
-            btn_edit = itemView.findViewById(R.id.btn_edit);
-            btn_delete = itemView.findViewById(R.id.btn_delete);
-            tv_type = itemView.findViewById(R.id.tv_type);
-            img_contact = itemView.findViewById(R.id.iPhoto);
+            tv_name = (TextView) itemView.findViewById(R.id.tv_name);
+            tv_surname = (TextView) itemView.findViewById(R.id.tv_surname);
+            btn_edit = (Button) itemView.findViewById(R.id.btn_edit);
+            btn_delete = (Button) itemView.findViewById(R.id.btn_delete);
+            tv_type = (TextView) itemView.findViewById(R.id.tv_type);
+            img_contact = (ImageView) itemView.findViewById(R.id.iPhoto);
         }
     }
 }
