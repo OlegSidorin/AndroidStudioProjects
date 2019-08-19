@@ -56,21 +56,38 @@ public class EditActivity extends AppCompatActivity {
         findViewById(R.id.btn_makeContact).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = ed_name.getText().toString();
-                String surname = ed_surname.getText().toString();
-                int type = spiner_type.getSelectedItemPosition();
-                String who;
-                if (name.equals("") || surname.equals("")) {
-                    Toast.makeText(EditActivity.this, "no data", Toast.LENGTH_SHORT).show();
+                if (getIntent().getExtras()!= null) {
+                    String name = ed_name.getText().toString();
+                    String surname = ed_surname.getText().toString();
+                    int type = spiner_type.getSelectedItemPosition();
+                    String who;
+                    if (name.equals("") || surname.equals("")) {
+                        Toast.makeText(EditActivity.this, "no data", Toast.LENGTH_SHORT).show();
+                    }
+                    Intent intent = new Intent();
+                    intent.putExtra("name", name);
+                    intent.putExtra("surname", surname);
+                    intent.putExtra("type", type);
+                    who = String.valueOf(spiner_type.getSelectedItem());
+                    intent.putExtra("who", who);
+                    intent.putExtra("position", getIntent().getExtras().getInt("position"));
+                    setResult(RESULT_OK, intent);
+                } else {
+                    String name = ed_name.getText().toString();
+                    String surname = ed_surname.getText().toString();
+                    int type = spiner_type.getSelectedItemPosition();
+                    String who;
+                    if (name.equals("") || surname.equals("")) {
+                        Toast.makeText(EditActivity.this, "no data", Toast.LENGTH_SHORT).show();
+                    }
+                    Intent intent = new Intent();
+                    intent.putExtra("name", name);
+                    intent.putExtra("surname", surname);
+                    intent.putExtra("type", type);
+                    who = String.valueOf(spiner_type.getSelectedItem());
+                    intent.putExtra("who", who);
+                    setResult(RESULT_OK, intent);
                 }
-                Intent intent = new Intent();
-                intent.putExtra("name", name);
-                intent.putExtra("surname", surname);
-                intent.putExtra("type", type);
-                who = String.valueOf(spiner_type.getSelectedItem());
-                intent.putExtra("who", who);
-                intent.putExtra("position", getIntent().getExtras().getInt("position"));
-                setResult(RESULT_OK, intent);
                 EditActivity.this.finish();
 
 

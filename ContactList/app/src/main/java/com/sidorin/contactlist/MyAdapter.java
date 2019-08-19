@@ -18,7 +18,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     public interface OnMyDataEditListener {
         void onEditData(ArrayList<MyData> data, int position);
-        void onAddData(ArrayList<MyData> data, int position);
 
     }
 
