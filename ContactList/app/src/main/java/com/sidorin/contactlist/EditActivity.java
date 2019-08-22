@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class EditActivity extends AppCompatActivity {
 
@@ -26,6 +27,7 @@ public class EditActivity extends AppCompatActivity {
         final EditText ed_surname = findViewById(R.id.inputSecondName);
         final Spinner spiner_type = findViewById(R.id.spinner_of_types);
         final ImageView contactPhotoIV = findViewById(R.id.contactPhoto);
+        ToggleButton tglbtn_MF = findViewById(R.id.toggleMFButton);
 
         findViewById(R.id.contactPhoto).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,16 +49,23 @@ public class EditActivity extends AppCompatActivity {
         if (intent != null && intent.getExtras() != null) {
             ed_name.setText(intent.getExtras().getString("name", ""));
             ed_surname.setText(intent.getExtras().getString("surname", ""));
-            ed_gender = intent.getExtras().getString("gender","");
-            if (ed_gender.equals("f")) contactPhotoIV.setImageResource(R.drawable.ic_female);
-            if (ed_gender.equals("m")) contactPhotoIV.setImageResource(R.drawable.ic_male);
+            ed_gender = intent.getExtras().getString("gender", "");
+            if (ed_gender.equals("f")) {
+                contactPhotoIV.setImageResource(R.drawable.ic_female);
+                tglbtn_MF.setChecked(false);
+            }
+            if (ed_gender.equals("m")) {
+                contactPhotoIV.setImageResource(R.drawable.ic_male);
+                tglbtn_MF.setChecked(true);
+            }
             spiner_type.setSelection(intent.getExtras().getInt("type", 3));
+
         }
 
         findViewById(R.id.btn_makeContact).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (getIntent().getExtras()!= null) {
+                if (getIntent().getExtras() != null) {
                     String name = ed_name.getText().toString();
                     String surname = ed_surname.getText().toString();
                     int type = spiner_type.getSelectedItemPosition();
@@ -97,6 +106,15 @@ public class EditActivity extends AppCompatActivity {
 
     }
 
+    public void onToggleMFButtonClicked(View view) {
+        ImageView contactPhotoIV = findViewById(R.id.contactPhoto);
+        boolean on = ((ToggleButton) view).isChecked();
+        if (on) {
+            contactPhotoIV.setImageResource(R.drawable.ic_male);
+        } else {
+            contactPhotoIV.setImageResource(R.drawable.ic_female);
+        }
+    }
 
 
     @Override
