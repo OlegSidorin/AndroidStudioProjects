@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -17,7 +18,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MyListActivity extends AppCompatActivity implements MyAdapter.OnMyDataEditListener {
+public class MyListActivity extends AppCompatActivity  {
     ArrayList<MyData> data;
     MyAdapter adapter;
 
@@ -25,6 +26,13 @@ public class MyListActivity extends AppCompatActivity implements MyAdapter.OnMyD
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_list);
+
+        final RecyclerView myRecyclerView = findViewById(R.id.rc_view);
+        data = MyData.dataGenerator(this);
+        adapter = new MyAdapter(data);
+        myRecyclerView.setAdapter(adapter);
+        myRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
 
         final ImageView iv_add = findViewById(R.id.iv_add);
         iv_add.setOnClickListener(new View.OnClickListener() {
@@ -34,38 +42,19 @@ public class MyListActivity extends AppCompatActivity implements MyAdapter.OnMyD
             }
         });
 
-        RecyclerView recyclerView = findViewById(R.id.rc_view);
-        data = MyData.dataGenerator(this);
-        adapter = new MyAdapter(data);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter.setOnMyDataEditListener(this);
+        final ImageView iv_edit = findViewById(R.id.iv_edit);
+        iv_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onEditData(data,adapter.getItemCount());
+            }
+        });
+
+
+        // adapter.setOnMyDataEditListener(this);
 
 
     }
-
-
-    @Override
-    public void onEditData(ArrayList<MyData> data, int position) {
-        // Toast.makeText(this,"Edit",Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, EditActivity.class);
-        MyData item = data.get(position);
-        intent.putExtra("name", item.name);
-        intent.putExtra("surname", item.surname);
-        intent.putExtra("gender", item.gender);
-        intent.putExtra("type", item.type);
-        intent.putExtra("who", item.who);
-        intent.putExtra("position", position);
-        startActivityForResult(intent, 1111);
-        //startActivity(intent);
-    }
-
-
-    public void onAddData(ArrayList<MyData> data, int position) {
-        Intent intent = new Intent(this, EditActivity.class);
-        startActivityForResult(intent, 2222);
-    }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -94,4 +83,26 @@ public class MyListActivity extends AppCompatActivity implements MyAdapter.OnMyD
             }
         }
     }
+
+
+    public void onEditData(ArrayList<MyData> data, int position) {
+        // Toast.makeText(this,"Edit",Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, EditActivity.class);
+        MyData item = data.get(position);
+        intent.putExtra("name", item.name);
+        intent.putExtra("surname", item.surname);
+        intent.putExtra("gender", item.gender);
+        intent.putExtra("type", item.type);
+        intent.putExtra("who", item.who);
+        intent.putExtra("position", position);
+        startActivityForResult(intent, 1111);
+        //startActivity(intent);
+    }
+
+
+    public void onAddData(ArrayList<MyData> data, int position) {
+        Intent intent = new Intent(this, EditActivity.class);
+        startActivityForResult(intent, 2222);
+    }
+
 }

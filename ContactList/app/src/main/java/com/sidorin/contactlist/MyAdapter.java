@@ -1,5 +1,6 @@
 package com.sidorin.contactlist;
 
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,19 +13,37 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+
     private ArrayList<MyData> data;
 
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        public TextView tv_name, tv_surname, tv_type;
+        //  public Button btn_edit, btn_delete;
+        public ImageView img_contact;
+
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tv_name = (TextView) itemView.findViewById(R.id.tv_name);
+            tv_surname = (TextView) itemView.findViewById(R.id.tv_surname);
+            //  btn_edit = (Button) itemView.findViewById(R.id.btn_edit);
+            //  btn_delete = (Button) itemView.findViewById(R.id.btn_delete);
+            tv_type = (TextView) itemView.findViewById(R.id.tv_type);
+            img_contact = (ImageView) itemView.findViewById(R.id.iPhoto);
+        }
+    }
+/*
     public interface OnMyDataEditListener {
         void onEditData(ArrayList<MyData> data, int position);
-
     }
 
     private OnMyDataEditListener onMyDataEditListener;
     public void setOnMyDataEditListener(OnMyDataEditListener onMyDataEditListener){
         this.onMyDataEditListener = onMyDataEditListener;
     }
+*/
 
     public MyAdapter(ArrayList<MyData> data) {
         this.data = data;
@@ -44,7 +63,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.tv_name.setText(item.name);
         holder.tv_surname.setText(item.surname);
         holder.tv_type.setText(item.who);
-
+/*
         holder.btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,7 +81,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 MyAdapter.this.notifyItemRangeChanged(position, data.size() - position);
             }
         });
-
+*/
         switch (item.gender) {
             case "f":
                 holder.img_contact.setImageResource(R.drawable.ic_female);
@@ -75,15 +94,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         }
         // holder.tv_type.setText(item.type);
 
-        /*
-        switch (item.type) {
-            case 0:
-                holder.iv_type.setImageResource(R.drawable.ic_coder);
-                break;
-            default:
-                holder.iv_type.setImageResource(R.drawable.ic_default);
-        }
-        */
     }
 
     @Override
@@ -91,19 +101,5 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return data.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView tv_name, tv_surname, tv_type;
-        public Button btn_edit, btn_delete;
-        public ImageView img_contact;
 
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-            tv_name = (TextView) itemView.findViewById(R.id.tv_name);
-            tv_surname = (TextView) itemView.findViewById(R.id.tv_surname);
-            btn_edit = (Button) itemView.findViewById(R.id.btn_edit);
-            btn_delete = (Button) itemView.findViewById(R.id.btn_delete);
-            tv_type = (TextView) itemView.findViewById(R.id.tv_type);
-            img_contact = (ImageView) itemView.findViewById(R.id.iPhoto);
-        }
-    }
 }
