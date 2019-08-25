@@ -26,8 +26,9 @@ public class EditActivity extends AppCompatActivity {
         final EditText ed_name = findViewById(R.id.inputFirstName);
         final EditText ed_surname = findViewById(R.id.inputSecondName);
         final Spinner spiner_type = findViewById(R.id.spinner_of_types);
-        final ImageView contactPhotoIV = findViewById(R.id.contactPhoto);
+        final ImageView contactPhoto = findViewById(R.id.contactPhoto);
         ToggleButton tglbtn_MF = findViewById(R.id.toggleMFButton);
+        contactPhoto.setImageResource(R.drawable.ic_portrait_black_24dp);
 
         findViewById(R.id.contactPhoto).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,18 +52,18 @@ public class EditActivity extends AppCompatActivity {
             ed_surname.setText(intent.getExtras().getString("surname", ""));
             ed_gender = intent.getExtras().getString("gender", "");
             if (ed_gender.equals("f")) {
-                contactPhotoIV.setImageResource(R.drawable.ic_female);
+                contactPhoto.setImageResource(R.drawable.ic_female);
                 tglbtn_MF.setChecked(false);
             }
             if (ed_gender.equals("m")) {
-                contactPhotoIV.setImageResource(R.drawable.ic_male);
+                contactPhoto.setImageResource(R.drawable.ic_male);
                 tglbtn_MF.setChecked(true);
             }
             spiner_type.setSelection(intent.getExtras().getInt("type", 3));
 
         }
 
-        findViewById(R.id.btn_makeContact).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_OK).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (getIntent().getExtras() != null) {

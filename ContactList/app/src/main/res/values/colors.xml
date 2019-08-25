@@ -8,4 +8,6 @@
     <color name="colorEditTextYellow">#f0932b</color>
     <color name="colorPhotoBack">#7ed6df</color>
     <color name="colorText">#D1D6DF</color>
+    <color name="colorSelectedItem">#673AB7</color>
+
 </resources>

@@ -1,28 +1,59 @@
 package com.sidorin.contactlist;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.Spinner;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MyListActivity extends AppCompatActivity  {
+public class MyListActivity extends AppCompatActivity {
     ArrayList<MyData> data;
     MyAdapter adapter;
 
-    @Override
+    @Override  // создание меню
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override  // выбор действия по пункту меню
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_add: // запускает активность редактирования с нулевыми параметрами
+                Intent intent_add = new Intent(this, EditActivity.class);
+                // нечего передавать
+                intent_add.putExtra("type", 8);
+                intent_add.putExtra("position", -1);
+                startActivityForResult(intent_add, 2222);
+                return true;
+            case R.id.action_edit: // запускает активность редактирования с передачей параметров в нее
+                if (adapter.selected_position > -1) {
+                    Intent intent_edit = new Intent(this, EditActivity.class);
+                    MyData data_item = data.get(adapter.selected_position);
+                    intent_edit.putExtra("name", data_item.name);
+                    intent_edit.putExtra("surname", data_item.surname);
+                    intent_edit.putExtra("gender", data_item.gender);
+                    intent_edit.putExtra("type", data_item.type);
+                    intent_edit.putExtra("who", data_item.who);
+                    intent_edit.putExtra("position", adapter.selected_position);
+                    startActivityForResult(intent_edit, 1111);
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override // запуск прииложения
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_list);
@@ -34,29 +65,10 @@ public class MyListActivity extends AppCompatActivity  {
         myRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-        final ImageView iv_add = findViewById(R.id.iv_add);
-        iv_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onAddData(data, 1);
-            }
-        });
-
-        final ImageView iv_edit = findViewById(R.id.iv_edit);
-        iv_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onEditData(data,adapter.getItemCount());
-            }
-        });
-
-
-        // adapter.setOnMyDataEditListener(this);
-
 
     }
 
-    @Override
+    @Override // возврат в активность с интентом
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1111 && resultCode == RESULT_OK && data != null) {
@@ -82,27 +94,6 @@ public class MyListActivity extends AppCompatActivity  {
                 adapter.notifyItemRangeChanged(0, adapter.getItemCount());
             }
         }
-    }
-
-
-    public void onEditData(ArrayList<MyData> data, int position) {
-        // Toast.makeText(this,"Edit",Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, EditActivity.class);
-        MyData item = data.get(position);
-        intent.putExtra("name", item.name);
-        intent.putExtra("surname", item.surname);
-        intent.putExtra("gender", item.gender);
-        intent.putExtra("type", item.type);
-        intent.putExtra("who", item.who);
-        intent.putExtra("position", position);
-        startActivityForResult(intent, 1111);
-        //startActivity(intent);
-    }
-
-
-    public void onAddData(ArrayList<MyData> data, int position) {
-        Intent intent = new Intent(this, EditActivity.class);
-        startActivityForResult(intent, 2222);
     }
 
 }

@@ -1,49 +1,49 @@
 package com.sidorin.contactlist;
 
-import android.util.SparseBooleanArray;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
+    int selected_position = -1;
+
     private ArrayList<MyData> data;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
         public TextView tv_name, tv_surname, tv_type;
-        //  public Button btn_edit, btn_delete;
         public ImageView img_contact;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
             tv_name = (TextView) itemView.findViewById(R.id.tv_name);
             tv_surname = (TextView) itemView.findViewById(R.id.tv_surname);
-            //  btn_edit = (Button) itemView.findViewById(R.id.btn_edit);
-            //  btn_delete = (Button) itemView.findViewById(R.id.btn_delete);
             tv_type = (TextView) itemView.findViewById(R.id.tv_type);
             img_contact = (ImageView) itemView.findViewById(R.id.iPhoto);
         }
-    }
-/*
-    public interface OnMyDataEditListener {
-        void onEditData(ArrayList<MyData> data, int position);
-    }
 
-    private OnMyDataEditListener onMyDataEditListener;
-    public void setOnMyDataEditListener(OnMyDataEditListener onMyDataEditListener){
-        this.onMyDataEditListener = onMyDataEditListener;
+        @Override
+        public void onClick(View view) {
+
+            if (getAdapterPosition() == RecyclerView.NO_POSITION) return;
+
+            // обновляем в соответствии с выделением
+            notifyItemChanged(selected_position);
+            selected_position = getAdapterPosition();
+            notifyItemChanged(selected_position);
+
+        }
     }
-*/
 
     public MyAdapter(ArrayList<MyData> data) {
         this.data = data;
@@ -60,28 +60,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, final int position) {
         final MyData item = data.get(position);
+        holder.itemView.setBackgroundColor(selected_position == position ? Color.GREEN : Color.WHITE);
         holder.tv_name.setText(item.name);
         holder.tv_surname.setText(item.surname);
         holder.tv_type.setText(item.who);
-/*
-        holder.btn_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Toast.makeText(view.getContext(), String.format("EDIT %s", item.surname), Toast.LENGTH_SHORT).show();
-                onMyDataEditListener.onEditData(data,position);
-            }
-        });
-        holder.btn_delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(view.getContext(), String.format("Удален контакт %s", item.surname), Toast.LENGTH_SHORT).show();
-                data.remove(position);
-                // MyAdapter.this.notifyDataSetChanged(); // заново
-                MyAdapter.this.notifyItemRemoved(position);
-                MyAdapter.this.notifyItemRangeChanged(position, data.size() - position);
-            }
-        });
-*/
+
         switch (item.gender) {
             case "f":
                 holder.img_contact.setImageResource(R.drawable.ic_female);
