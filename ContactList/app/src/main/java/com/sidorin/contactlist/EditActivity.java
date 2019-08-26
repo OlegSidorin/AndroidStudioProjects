@@ -1,11 +1,10 @@
 package com.sidorin.contactlist;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -14,14 +13,36 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 public class EditActivity extends AppCompatActivity {
 
     private String ed_gender;
+
+    @Override  // создание меню
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_edit, menu);
+        return true;
+    }
+
+    @Override  // выбор действия по пункту меню
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+                return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_contact);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_edit);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         final EditText ed_name = findViewById(R.id.inputFirstName);
         final EditText ed_surname = findViewById(R.id.inputSecondName);

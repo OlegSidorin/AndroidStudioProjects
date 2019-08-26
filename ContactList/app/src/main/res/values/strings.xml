@@ -4,6 +4,8 @@
     <string name="second_name">Фамилия</string>
     <string name="action_edit">Edit</string>
     <string name="action_del">Delete</string>
+    <string name="label_main_activity">Контакты</string>
+    <string name="label_edit_activity">Редактор контакта</string>
     <string-array name="names">
         <item>Мария</item>
         <item>Сергей</item>

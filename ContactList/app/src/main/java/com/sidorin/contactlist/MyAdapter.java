@@ -60,7 +60,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, final int position) {
         final MyData item = data.get(position);
-        holder.itemView.setBackgroundColor(selected_position == position ? Color.GREEN : Color.WHITE);
+        holder.itemView.setBackgroundColor(selected_position == position ? Color.argb(255,156,185,235) : Color.WHITE);
         holder.tv_name.setText(item.name);
         holder.tv_surname.setText(item.surname);
         holder.tv_type.setText(item.who);
