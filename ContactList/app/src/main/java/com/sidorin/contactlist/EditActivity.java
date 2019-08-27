@@ -84,7 +84,7 @@ public class EditActivity extends AppCompatActivity {
 
         }
 
-        findViewById(R.id.btn_OK).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_save_contact).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (getIntent().getExtras() != null) {
@@ -92,7 +92,7 @@ public class EditActivity extends AppCompatActivity {
                     String surname = ed_surname.getText().toString();
                     int type = spiner_type.getSelectedItemPosition();
                     String who;
-                    if (name.equals("") || surname.equals("")) {
+                    if (name.equals("")) {
                         Toast.makeText(EditActivity.this, "no data", Toast.LENGTH_SHORT).show();
                     }
                     Intent intent = new Intent();
@@ -108,13 +108,12 @@ public class EditActivity extends AppCompatActivity {
                     String surname = ed_surname.getText().toString();
                     int type = spiner_type.getSelectedItemPosition();
                     String who;
-                    if (name.equals("") || surname.equals("")) {
-                        Toast.makeText(EditActivity.this, "no data", Toast.LENGTH_SHORT).show();
-                    }
+
                     Intent intent = new Intent();
                     intent.putExtra("name", name);
                     intent.putExtra("surname", surname);
                     intent.putExtra("type", type);
+                    intent.putExtra("gender","f");
                     who = String.valueOf(spiner_type.getSelectedItem());
                     intent.putExtra("who", who);
                     setResult(RESULT_OK, intent);

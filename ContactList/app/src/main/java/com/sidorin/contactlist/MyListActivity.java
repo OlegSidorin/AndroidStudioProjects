@@ -70,7 +70,8 @@ public class MyListActivity extends AppCompatActivity {
         myRecyclerView.setAdapter(adapter);
         myRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
+        TextView tv_info = findViewById(R.id.tv_info);
+        tv_info.setText(""+adapter.getItemCount());
 
     }
 
@@ -81,6 +82,7 @@ public class MyListActivity extends AppCompatActivity {
             String name = data.getStringExtra("name");
             String surname = data.getStringExtra("surname");
             String who = data.getStringExtra("who");
+            String gender = data.getStringExtra("gender");
             int type = data.getIntExtra("type", 0);
             int pos = data.getIntExtra("position", -1);
             MyData item = this.data.get(pos);
@@ -88,16 +90,23 @@ public class MyListActivity extends AppCompatActivity {
             item.surname = surname;
             item.type = type;
             item.who = who;
+            item.gender = "f";
             adapter.notifyItemChanged(pos);
         } else {
             if (requestCode == 2222 && resultCode == RESULT_OK && data != null) {
-                TextView tv_name = findViewById(R.id.inputFirstName);
-                String name = tv_name.getText().toString();
-                int pos = 0;
-                MyData itemNew = new MyData(name, "sd", "m", "fuck", 2);
-                MyListActivity.this.data.add(pos, itemNew);
-                adapter.notifyItemInserted(pos);
-                adapter.notifyItemRangeChanged(0, adapter.getItemCount());
+                String name = data.getStringExtra("name");
+                String surname = data.getStringExtra("surname");
+                String who = data.getStringExtra("who");
+                //String gender = data.getStringExtra("gender");
+
+                int type = data.getIntExtra("type", 0);
+                MyData item = new MyData(name,surname,"f",who,type);
+                MyListActivity.this.data.add(item);
+                TextView tv_info = findViewById(R.id.tv_info);
+                tv_info.setText(""+adapter.getItemCount()+name+surname+who);
+                adapter.notifyItemInserted(adapter.getItemCount()-1);
+                // adapter.notifyItemInserted(1);
+                adapter.notifyItemRangeChanged(adapter.getItemCount()-1, adapter.getItemCount());
             }
         }
     }
