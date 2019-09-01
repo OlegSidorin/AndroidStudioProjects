@@ -4,19 +4,19 @@
     <item
         android:id="@+id/action_edit"
         android:orderInCategory="100"
-        android:icon="@drawable/ic_edit_light_24dp"
-        android:title="@string/action_edit"
-        app:showAsAction="ifRoom"/>
-    <item
-        android:id="@+id/action_none"
-        android:orderInCategory="100"
-        android:icon="@drawable/ic_portrait_black_24dp"
+        android:icon="@drawable/account_edit"
         android:title="@string/action_edit"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/action_add"
         android:orderInCategory="100"
-        android:icon="@drawable/ic_person_add_blue_24dp"
+        android:icon="@drawable/account_plus"
         android:title="@string/action_del"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_delete"
+        android:orderInCategory="100"
+        android:icon="@drawable/account_remove"
+        android:title="@string/action_edit"
         app:showAsAction="ifRoom"/>
 </menu>

@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+public class AdapterForRV extends RecyclerView.Adapter<AdapterForRV.MyViewHolder> {
 
     int selected_position = -1;
 
-    private ArrayList<MyData> data;
+    private ArrayList<DataItem> data;
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -45,22 +45,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         }
     }
 
-    public MyAdapter(ArrayList<MyData> data) {
+    public AdapterForRV(ArrayList<DataItem> data) {
         this.data = data;
     }
 
     @NonNull
     @Override
-    public MyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterForRV.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_item, parent, false);
         MyViewHolder myViewHolder = new MyViewHolder(itemView);
         return myViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, final int position) {
-        final MyData item = data.get(position);
-        holder.itemView.setBackgroundColor(selected_position == position ? Color.argb(255,156,185,235) : Color.WHITE);
+    public void onBindViewHolder(@NonNull AdapterForRV.MyViewHolder holder, final int position) {
+        final DataItem item = data.get(position);
+        holder.itemView.setBackgroundColor(selected_position == position ? Color.argb(90,156,185,235) : Color.TRANSPARENT);
         holder.tv_name.setText(item.name);
         holder.tv_surname.setText(item.surname);
         holder.tv_type.setText(item.who);
@@ -73,7 +73,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 holder.img_contact.setImageResource(R.drawable.ic_male);
                 break;
             default:
-                holder.img_contact.setImageResource(R.drawable.ic_portrait_black_24dp);
+                holder.img_contact.setImageResource(R.drawable.ic_portrait_24dp);
         }
         // holder.tv_type.setText(item.type);
 

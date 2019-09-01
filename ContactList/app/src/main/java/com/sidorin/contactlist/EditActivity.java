@@ -49,7 +49,7 @@ public class EditActivity extends AppCompatActivity {
         final Spinner spiner_type = findViewById(R.id.spinner_of_types);
         final ImageView contactPhoto = findViewById(R.id.contactPhoto);
         ToggleButton tglbtn_MF = findViewById(R.id.toggleMFButton);
-        contactPhoto.setImageResource(R.drawable.ic_portrait_black_24dp);
+        contactPhoto.setImageResource(R.drawable.ic_portrait_24dp);
 
         findViewById(R.id.contactPhoto).setOnClickListener(new View.OnClickListener() {
             @Override

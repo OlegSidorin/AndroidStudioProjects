@@ -10,5 +10,6 @@
     <color name="colorText">#D1D6DF</color>
     <color name="colorSelectedItem">#9CB9DF</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorTransparent">#00FFFFFF</color>
 
 </resources>

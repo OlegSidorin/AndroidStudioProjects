@@ -5,12 +5,12 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class MyData {
+public class DataItem {
     public String name, surname, gender, who;
     public int year;
     public int type;
 
-    public MyData(String name, String surname, String gender, String who, int type) {
+    public DataItem(String name, String surname, String gender, String who, int type) {
         this.name = name;
         this.surname = surname;
         this.gender = gender;
@@ -18,20 +18,20 @@ public class MyData {
         this.type = type;
     }
 
-    public MyData(String name, String surname, int year, int type) {
+    public DataItem(String name, String surname, int year, int type) {
         this.name = name;
         this.surname = surname;
         this.year = year;
         this.type = type;
     }
 /*
-    public static ArrayList<MyData> dataGenerator(Context context, int size) {
-        ArrayList<MyData> data = new ArrayList<>();
+    public static ArrayList<DataItem> dataGenerator(Context context, int size) {
+        ArrayList<DataItem> data = new ArrayList<>();
         String[] names = context.getResources().getStringArray(R.array.names);
         String[] surnames = context.getResources().getStringArray(R.array.surnames);
         Random rand = new Random();
         for (int i = 0; i< size; i++) {
-            MyData item = new MyData(names[rand.nextInt(names.length)],
+            DataItem item = new DataItem(names[rand.nextInt(names.length)],
                     surnames[rand.nextInt(names.length)],
                     1990 + rand.nextInt(30),
                     rand.nextInt(4));
@@ -41,8 +41,8 @@ public class MyData {
     }
     */
 
-    public static ArrayList<MyData> dataGenerator(Context context) {
-        ArrayList<MyData> data = new ArrayList<>();
+    public static ArrayList<DataItem> dataGenerator(Context context) {
+        ArrayList<DataItem> data = new ArrayList<>();
         String[] names = context.getResources().getStringArray(R.array.names);
         String[] surnames = context.getResources().getStringArray(R.array.surnames);
         String[] gender = context.getResources().getStringArray(R.array.gender);
@@ -51,7 +51,7 @@ public class MyData {
         Random rand = new Random();
         for (int i = 0; i < 50; i++) {
             type[i] = rand.nextInt(who.length);
-            MyData item = new MyData(names[i], surnames[i], gender[i], who[type[i]], type[i]);
+            DataItem item = new DataItem(names[i], surnames[i], gender[i], who[type[i]], type[i]);
             data.add(item);
         }
         return data;
