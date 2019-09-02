@@ -1,11 +1,10 @@
 package com.sidorin.contactlist;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -14,20 +13,43 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 public class EditActivity extends AppCompatActivity {
 
     private String ed_gender;
+
+    @Override  // создание меню
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_edit, menu);
+        return true;
+    }
+
+    @Override  // выбор действия по пункту меню
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+                return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_contact);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_edit);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         final EditText ed_name = findViewById(R.id.inputFirstName);
         final EditText ed_surname = findViewById(R.id.inputSecondName);
         final Spinner spiner_type = findViewById(R.id.spinner_of_types);
-        final ImageView contactPhotoIV = findViewById(R.id.contactPhoto);
+        final ImageView contactPhoto = findViewById(R.id.contactPhoto);
         ToggleButton tglbtn_MF = findViewById(R.id.toggleMFButton);
+        contactPhoto.setImageResource(R.drawable.ic_portrait_24dp);
 
         findViewById(R.id.contactPhoto).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,18 +73,18 @@ public class EditActivity extends AppCompatActivity {
             ed_surname.setText(intent.getExtras().getString("surname", ""));
             ed_gender = intent.getExtras().getString("gender", "");
             if (ed_gender.equals("f")) {
-                contactPhotoIV.setImageResource(R.drawable.ic_female);
+                contactPhoto.setImageResource(R.drawable.ic_female);
                 tglbtn_MF.setChecked(false);
             }
             if (ed_gender.equals("m")) {
-                contactPhotoIV.setImageResource(R.drawable.ic_male);
+                contactPhoto.setImageResource(R.drawable.ic_male);
                 tglbtn_MF.setChecked(true);
             }
             spiner_type.setSelection(intent.getExtras().getInt("type", 3));
 
         }
 
-        findViewById(R.id.btn_makeContact).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_save_contact).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (getIntent().getExtras() != null) {
@@ -70,7 +92,7 @@ public class EditActivity extends AppCompatActivity {
                     String surname = ed_surname.getText().toString();
                     int type = spiner_type.getSelectedItemPosition();
                     String who;
-                    if (name.equals("") || surname.equals("")) {
+                    if (name.equals("")) {
                         Toast.makeText(EditActivity.this, "no data", Toast.LENGTH_SHORT).show();
                     }
                     Intent intent = new Intent();
@@ -86,13 +108,12 @@ public class EditActivity extends AppCompatActivity {
                     String surname = ed_surname.getText().toString();
                     int type = spiner_type.getSelectedItemPosition();
                     String who;
-                    if (name.equals("") || surname.equals("")) {
-                        Toast.makeText(EditActivity.this, "no data", Toast.LENGTH_SHORT).show();
-                    }
+
                     Intent intent = new Intent();
                     intent.putExtra("name", name);
                     intent.putExtra("surname", surname);
                     intent.putExtra("type", type);
+                    intent.putExtra("gender","f");
                     who = String.valueOf(spiner_type.getSelectedItem());
                     intent.putExtra("who", who);
                     setResult(RESULT_OK, intent);
