@@ -64,17 +64,8 @@ public class AdapterForRV extends RecyclerView.Adapter<AdapterForRV.MyViewHolder
         holder.tv_name.setText(item.name);
         holder.tv_surname.setText(item.surname);
         holder.tv_type.setText(item.who);
+        holder.img_contact.setImageResource(item.src);
 
-        switch (item.gender) {
-            case "f":
-                holder.img_contact.setImageResource(R.drawable.ic_female);
-                break;
-            case "m":
-                holder.img_contact.setImageResource(R.drawable.ic_male);
-                break;
-            default:
-                holder.img_contact.setImageResource(R.drawable.ic_portrait_24dp);
-        }
         // holder.tv_type.setText(item.type);
 
     }
