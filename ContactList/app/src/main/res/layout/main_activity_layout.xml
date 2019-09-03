@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
+    android:background="@drawable/abstrakciya_39077"
     tools:context=".MainActivity">
 
 
@@ -30,11 +30,6 @@
         app:layout_constraintStart_toEndOf="@+id/bottom_text_one"
         app:layout_constraintTop_toBottomOf="@+id/rc_view" />
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rc_view"
         android:layout_width="match_parent"
@@ -51,12 +46,17 @@
     <fragment
         android:id="@+id/fragment_main_container"
         android:name="com.sidorin.contactlist.BlankFragment"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
+        android:layout_width="wrap_content"
+        android:layout_height="500dp"
+        app:layout_constraintBottom_toBottomOf="@+id/rc_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.524"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbar"
         tools:layout="@layout/fragment_blank" />
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

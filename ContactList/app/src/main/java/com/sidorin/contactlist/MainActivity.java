@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity implements Toolbar.OnMenuIte
                 FragmentForEditContact fragment = new FragmentForEditContact();
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.setCustomAnimations(R.anim.go_down,
-                        R.anim.go_up);
+                fragmentTransaction.setCustomAnimations(R.anim.go_up,
+                        R.anim.go_down);
                 fragmentTransaction.add(R.id.fragment_main_container, fragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
