@@ -17,9 +17,12 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements Toolbar.OnMenuItemClickListener {
+public class MainActivity extends AppCompatActivity
+        implements Toolbar.OnMenuItemClickListener {
     static ArrayList<DataItem> data;
     static AdapterForRV adapter;
     static RecyclerView myRecyclerView;
@@ -41,6 +44,9 @@ public class MainActivity extends AppCompatActivity implements Toolbar.OnMenuIte
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 fragment.setDataItem(data.get(adapter.selected_position));
+                TextView textView= findViewById(R.id.info_text_2);
+                textView.setText("Контакт "+adapter.selected_position + " (" + data.get(adapter.selected_position).surname + ") : редактирование");
+
                 return true;
         }
         return false;
@@ -86,7 +92,4 @@ public class MainActivity extends AppCompatActivity implements Toolbar.OnMenuIte
             }
         }
     }
-
-
-
 }

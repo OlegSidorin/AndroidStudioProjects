@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,24 +18,27 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 
-public class FragmentForEditContact extends Fragment {
+public class FragmentForEditContact extends Fragment implements View.OnClickListener {
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
     // TODO: Rename and change types of parameters
 
 
-    public FragmentForEditContact()  {
+    public FragmentForEditContact() {
         // Required empty public constructor
     }
-    String selectedSurname, selectedName;
+
     DataItem dataItem;
 
     public void setDataItem(DataItem dataItem) {
         this.dataItem = dataItem;
     }
 
-
+    public DataItem getDataItem() {
+        return dataItem;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,6 +65,21 @@ public class FragmentForEditContact extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
+        View view = getView();
+        final Button button = view.findViewById(R.id.btn_save_contact);
+        button.setOnClickListener(this);
     }
+
+    @Override
+    public void onClick(View view) {
+        View viewRoot = getView().getRootView();
+        TextView textView = viewRoot.findViewById(R.id.info_text_2);
+        textView.setText("Waw");
+        View viewOfFragment = getView();
+        TextView textView1 = viewOfFragment.findViewById(R.id.inputSecondName);
+        dataItem.surname = textView1.getText().toString();
+        // MainActivity.data.set()
+        //view1.animate().rotation(100);
+    }
+
 }
