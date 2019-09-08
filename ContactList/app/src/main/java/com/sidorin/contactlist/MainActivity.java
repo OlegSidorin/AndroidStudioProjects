@@ -1,11 +1,15 @@
 package com.sidorin.contactlist;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.MenuItem;
 
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 
@@ -41,9 +45,10 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.setCustomAnimations(R.anim.go_up,
                         R.anim.go_down);
                 fragmentTransaction.add(R.id.fragment_main_container, fragment);
-                fragmentTransaction.addToBackStack(null);
+                // fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 fragment.setDataItem(data.get(adapter.selected_position));
+                fragment.setPosition(adapter.selected_position);
                 TextView textView= findViewById(R.id.info_text_2);
                 textView.setText("Контакт "+adapter.selected_position + " (" + data.get(adapter.selected_position).surname + ") : редактирование");
 
@@ -92,4 +97,6 @@ public class MainActivity extends AppCompatActivity
             }
         }
     }
+
+
 }

@@ -18,6 +18,7 @@ public class DataItem {
         this.src = image_src;
     }
 
+
 /*
     public static ArrayList<DataItem> dataGenerator(Context context, int size) {
         ArrayList<DataItem> data = new ArrayList<>();
