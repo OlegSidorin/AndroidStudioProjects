@@ -1,0 +1,3 @@
+в параграфе <activity .. > такая строчка сохраняет активность с ее данными
+android:configChanges="keyboardHidden|orientation|screenSize"
+без этой строчки активность уничтожается и создается новая

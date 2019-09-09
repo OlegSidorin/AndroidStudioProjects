@@ -17,7 +17,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="Сохранить контакт"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_of_types" />
@@ -26,12 +26,12 @@
         android:id="@+id/inputSecondName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="@string/second_name"
         android:inputType="textPersonName"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/contactPhoto"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,18 +39,18 @@
         android:id="@+id/inputFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="12dp"
         android:ems="10"
         android:hint="@string/first_name"
         android:inputType="textPersonName"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/contactPhoto"
         app:layout_constraintTop_toBottomOf="@+id/inputSecondName" />
+
     <ImageView
         android:id="@+id/contactPhoto"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/pig"
@@ -61,14 +61,16 @@
         android:id="@+id/spinner_of_types"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
         android:background="@color/colorWhite"
         android:gravity="center"
         android:spinnerMode="dialog"
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactPhoto" />
+        app:layout_constraintTop_toBottomOf="@+id/inputFirstName" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

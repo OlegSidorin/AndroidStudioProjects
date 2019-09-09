@@ -24,6 +24,7 @@ public class AdapterForRV extends RecyclerView.Adapter<AdapterForRV.MyViewHolder
         public ImageView img_contact;
 
         public MyViewHolder(@NonNull View itemView) {
+
             super(itemView);
             itemView.setOnClickListener(this);
             tv_name = (TextView) itemView.findViewById(R.id.tv_name);
