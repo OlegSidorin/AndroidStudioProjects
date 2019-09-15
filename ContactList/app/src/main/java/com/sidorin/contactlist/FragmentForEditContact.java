@@ -94,6 +94,9 @@ public class FragmentForEditContact extends Fragment implements View.OnClickList
         TextView tv_name = viewOfFragment.findViewById(R.id.inputFirstName);
         Spinner spinner = viewOfFragment.findViewById(R.id.spinner_of_types);
         ImageView iv_picOfAccount = viewOfFragment.findViewById(R.id.contactPhoto);
+
+
+
         dataItem.name = tv_name.getText().toString();
         dataItem.surname = tv_surname.getText().toString();
         //dataItem.gender = "f";

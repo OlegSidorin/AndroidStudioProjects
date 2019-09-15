@@ -3,6 +3,7 @@
     package="com.sidorin.contactlist">
 
     <application
+        android:name="com.sidorin.contactlist.MyContacts"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -19,14 +20,6 @@
 
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter></activity>
-        <activity
-            android:name=".EditActivity"
-            android:label="@string/label_edit_activity"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
-        </activity>
     </application>
 
 </manifest>

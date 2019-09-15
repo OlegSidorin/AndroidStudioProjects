@@ -1,6 +1,7 @@
 package com.sidorin.contactlist;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -36,6 +37,7 @@ public class DataItem {
     }
     */
 
+
     public static ArrayList<DataItem> dataGenerator(Context context) {
         ArrayList<DataItem> data = new ArrayList<>();
         String[] names = context.getResources().getStringArray(R.array.names);
@@ -45,9 +47,9 @@ public class DataItem {
         int[] type = new int[context.getResources().getStringArray(R.array.names).length];
         int[] src = new int[context.getResources().getStringArray(R.array.names).length];
 
-        for (int i = 0; i<50; i++) {
-            if (gender[i].equals("f"))  src[i] =  R.drawable.ic_female;
-            if (gender[i].equals("m"))  src[i] = R.drawable.ic_male;
+        for (int i = 0; i < 50; i++) {
+            if (gender[i].equals("f")) src[i] = R.drawable.ic_female;
+            if (gender[i].equals("m")) src[i] = R.drawable.ic_male;
         }
 
         Random rand = new Random();
@@ -56,8 +58,6 @@ public class DataItem {
             DataItem item = new DataItem(names[i], surnames[i], gender[i], who[type[i]], type[i], src[i]);
             data.add(item);
         }
-
-
-            return data;
+        return data;
     }
 }
